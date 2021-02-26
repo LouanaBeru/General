@@ -1,6 +1,3 @@
-#pivot de gauss
-# -> determinant
-
 import numpy as np 
 
 ################################################
