@@ -1,9 +1,11 @@
+##MODULES
 import numpy as np 
 
 ################################################
 ##DIMENSION DES MATRICES
 
 def dim(A):
+    A = np.asarray(A)
     taille = np.shape(A)
     return taille
 
@@ -19,7 +21,11 @@ def dim(A):
 ##PRODUIT MATRICIEL
 
 def produitMat(A, B):
+    print(type(B))
+    print(dim(B))
     if dim(A)[1] == dim(B)[0]:
+        A = np.asarray(A)
+        B = np.asarray(B)
         multiple = np.dot(A,B)
         return multiple
 
@@ -34,16 +40,23 @@ def produitMat(A, B):
 # c = np.array([[1, 1],
 #                 [1, 1],
 #                 [1, 1]])
+# d = np.array([[1, 1, 1],
+#             [1, 1, 1]])
+# e = np.array([[1, 0],
+#             [0, 1],
+#             [2, 0]])
 
 # ab = produitMat(a, b)
 # ac = produitMat(a, c)
-# print(ab, ac)
+# de = produitMat(d, e)
+# print(ab,ac, de)
 
 ################################################
 ##TRANSPOSITION
 
 def transpose(A):
-    transposee = A.T
+    A = np.asarray(A)
+    transposee = A.transpose()
     return transposee
 
 # #TEST transpose
@@ -56,8 +69,12 @@ def transpose(A):
 ##DETERMINANT
 
 def det(A):
-    determinant = np.linalg.det(A)
-    return determinant
+    A = np.asarray(A)
+    if dim(A)[0] == dim(A)[1]:
+        determinant = np.linalg.det(A)
+        return determinant
+    else:
+        return 0
 
 # #TEST det
 
@@ -78,7 +95,8 @@ def det(A):
 ##INVERSE
 
 def inverse(A):
-    if det(A) != 0:
+    if dim(A)[0] == dim(A)[1] and det(A) != 0 :
+        A = np.asarray(A)
         inversee = np.linalg.inv(A)
         return inversee
     else:
@@ -94,3 +112,35 @@ def inverse(A):
 # invA = inverse(a)
 # invB = inverse(b)
 # print(invA, invB)
+
+################################################
+##PRODUIT NOMBRE MATRICE
+
+def produitMatNbr(nbr, A):
+    A = np.asarray(A)
+    n = dim(A)[0]
+    m = dim(A)[1]
+    for i in range(n):
+        for j in range(m):
+            A[i][j] = nbr * A[i][j] 
+    return A
+
+# #TEST produitMatNbr
+
+# A = [[1, 0],
+#     [1, 2]]
+
+# B = [[1, 2, 3]]
+# a = 3
+# b = -2
+
+# aA = produitMatNbr(a, A)
+# bA = produitMatNbr(b, A)
+# aB = produitMatNbr(a, B)
+# bB = produitMatNbr(b, B)
+
+
+# print(aA) 
+# print(bA)
+# print(aB) 
+# print(bB)
