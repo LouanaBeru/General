@@ -21,8 +21,6 @@ def dim(A):
 ##PRODUIT MATRICIEL
 
 def produitMat(A, B):
-    print(type(B))
-    print(dim(B))
     if dim(A)[1] == dim(B)[0]:
         A = np.asarray(A)
         B = np.asarray(B)
@@ -30,7 +28,7 @@ def produitMat(A, B):
         return multiple
 
     else:
-        return 'ERREUR : Les matrices n ont pas les bonnes dimensions'
+        return 'ERREUR <produitMat> : Les matrices n ont pas les bonnes dimensions'
 
 # #TEST produitMat
 # a = np.array([[2, 2],
@@ -54,15 +52,15 @@ def produitMat(A, B):
 ################################################
 ##TRANSPOSITION
 
-def transpose(A):
+def transposee(A):
     A = np.asarray(A)
-    transposee = A.transpose()
-    return transposee
+    transpose = A.transpose()
+    return transpose
 
-# #TEST transpose
+# #TEST transposee
 
 # a = np.array([[2, 2, 3]])
-# t = transpose(a)
+# t = transposee(a)
 # print(t)
 
 ################################################
@@ -100,7 +98,7 @@ def inverse(A):
         inversee = np.linalg.inv(A)
         return inversee
     else:
-        return 'ERREUR : La matrice n est pas inversible'
+        return 'ERREUR <inverse>: La matrice n est pas inversible'
 
 # #TEST inverse
 
